@@ -32,6 +32,9 @@ SDL_Surface *IMG_LoadBmp(const std::string &file) {
   std::string file_data = GetFile(name);
   SDL_RWops *rw = SDL_RWFromConstMem(file_data.data(), file_data.size());
   auto image = SDL_LoadBMP_RW(rw, 1);
+  // vk TODO: It might help to load via SDL_image.h instead
+  //   first include it:  #include <SDL2/SDL_image.h>
+  // auto image = IMG_Load(name.c_str());
 
   if (image->format->format == SDL_PIXELFORMAT_ARGB8888) {
     DO_VALIDATION;
